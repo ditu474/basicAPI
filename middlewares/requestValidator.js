@@ -7,7 +7,7 @@ const requestValidator = (schemaValidator) => (req, res, next) => {
 
   if (valid) return next();
 
-  res.send(404, { errors: validate.errors });
+  res.status(404).json({ errors: validate.errors });
 };
 
 module.exports = requestValidator;

@@ -7,7 +7,8 @@ const schemaValidator = {
       type: "object",
       properties: {
         document: {
-          type: "number",
+          type: "string",
+          pattern: "^[0-9]{8,10}$",
         },
       },
       required: ["document"],
@@ -20,7 +21,7 @@ const getStudentByDocument = async (req, res) => {
   const document = req.query.document;
   const student = await getStudentRepository(document);
 
-  res.send(200, { student });
+  res.status(200).json({ student });
 };
 
 module.exports = {
