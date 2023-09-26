@@ -11,7 +11,10 @@ const getStudentByDocument = async (document) => {
       if (err) reject(err);
 
       if (!row) resolve(null);
-      else resolve(new Student(...row));
+      else
+        resolve(
+          new Student(row.document, row.name, row.age, row.address, row.school),
+        );
     });
   });
 };

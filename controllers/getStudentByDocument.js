@@ -22,7 +22,7 @@ const getStudentByDocument = async (req, res) => {
   const student = await getStudentRepository(document);
 
   if (!student) {
-    res.status(400).json({ message: "No se encontró el estudiante" });
+    res.status(404).json({ message: "No se encontró el estudiante" });
     return;
   }
 
