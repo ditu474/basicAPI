@@ -12,8 +12,8 @@ const createDatabase = (resolve) => {
       CREATE TABLE IF NOT EXISTS students (
         document TEXT PRIMARY KEY,
         name TEXT NOT NULL,
-        email TEXT NOT NULL,
-        phone TEXT NOT NULL,
+        age TEXT NOT NULL,
+        address TEXT NOT NULL,
         school TEXT NOT NULL
       )
     `);

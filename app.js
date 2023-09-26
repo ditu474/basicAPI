@@ -8,6 +8,10 @@ const {
   controller: getStudentByDocument,
   schema: getStudentByDocumentSchema,
 } = require("./controllers/getStudentByDocument");
+const {
+  controller: createStudent,
+  schema: createStudentSchema,
+} = require("./controllers/createStudent");
 
 app.use(express.json());
 
@@ -16,6 +20,7 @@ app.get(
   requestValidator(getStudentByDocumentSchema),
   getStudentByDocument,
 );
+app.post("/student", requestValidator(createStudentSchema), createStudent);
 
 app.all("*", (req, res, next) => {
   next(`No se encontró ${req.originalUrl} en este servidor`);
