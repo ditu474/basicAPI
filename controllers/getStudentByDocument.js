@@ -21,6 +21,11 @@ const getStudentByDocument = async (req, res) => {
   const document = req.query.document;
   const student = await getStudentRepository(document);
 
+  if (!student) {
+    res.status(400).json({ message: "No se encontró el estudiante" });
+    return;
+  }
+
   res.status(200).json({ student });
 };
 

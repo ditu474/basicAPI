@@ -7,7 +7,7 @@ const getStudentByDocument = async (document) => {
   const client = await getClient();
 
   return new Promise((resolve, reject) => {
-    client.each(sql, [document], (err, row) => {
+    client.get(sql, [document], (err, row) => {
       if (err) reject(err);
 
       if (!row) resolve(null);

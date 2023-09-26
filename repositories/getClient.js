@@ -26,7 +26,7 @@ const getClient = () =>
   new Promise((resolve) => {
     if (db) return resolve(db);
 
-    db = new sqlite3.Database("./crudAPI.db", sqlite3.OPEN_READWRITE, (err) => {
+    db = new sqlite3.Database("crudAPI.db", sqlite3.OPEN_READWRITE, (err) => {
       if (err && err.code == "SQLITE_CANTOPEN") {
         createDatabase(resolve);
         return;
