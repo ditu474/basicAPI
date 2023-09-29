@@ -12,15 +12,20 @@ const {
   controller: createStudent,
   schema: createStudentSchema,
 } = require("./controllers/createStudent");
+const {
+  controller: updateStudent,
+  schema: updateStudentSchema,
+} = require("./controllers/updateStudent");
 
 app.use(express.json());
 
 app.get(
   "/student",
   requestValidator(getStudentByDocumentSchema),
-  getStudentByDocument,
+  getStudentByDocument
 );
 app.post("/student", requestValidator(createStudentSchema), createStudent);
+app.put("/student", requestValidator(updateStudentSchema), updateStudent);
 
 app.all("*", (req, res, next) => {
   next(`No se encontró ${req.originalUrl} en este servidor`);
