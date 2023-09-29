@@ -1,5 +1,4 @@
 const getClient = require("./getClient");
-const getStudentByDocument = require("./getStudentByDocument");
 
 const sql = `UPDATE students SET name=?, age=?, address=?, school=? WHERE document=?`;
 

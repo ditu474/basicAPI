@@ -16,6 +16,10 @@ const {
   controller: updateStudent,
   schema: updateStudentSchema,
 } = require("./controllers/updateStudent");
+const {
+  controller: deleteStudent,
+  schema: deleteStudentSchema,
+} = require("./controllers/deleteStudent");
 
 app.use(express.json());
 
@@ -26,8 +30,9 @@ app.get(
 );
 app.post("/student", requestValidator(createStudentSchema), createStudent);
 app.put("/student", requestValidator(updateStudentSchema), updateStudent);
+app.delete("/student", requestValidator(deleteStudentSchema), deleteStudent);
 
-app.all("*", (req, res, next) => {
+app.all("*", (req, _, next) => {
   next(`No se encontró ${req.originalUrl} en este servidor`);
 });
 
